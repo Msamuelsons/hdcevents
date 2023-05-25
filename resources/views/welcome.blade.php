@@ -3,41 +3,40 @@
 @section('title', 'HDC Events')
 
 @section('content')
-<img src="/img/banner.jpg" alt="banner">
+
 <h1>Algum título</h1>
-@if(10 > 5)
-<p>A condição e true</p>
+<img src="/img/banner.jpg" alt="Banner">
+@if(10 > 15)
+<p>A condição é true</p>
 @endif
-@if ($meu_nome === "Samuel")
-    <h1>Meu nome é: {{ $meu_nome }}: true</h1>
 
-@elseif ($meu_nome === "Marcos")
-    <h1>Seu nome é {{ $meu_nome }}: true</h1>
+<p>{{ $nome }}</p>
+
+@if($nome == "Pedro")
+<p>O nome é Pedro</p>
+@elseif($nome == "Matheus")
+<p>O nome é {{ $nome }} e ele tem {{ $idade2 }} anos, e trabalha como {{ $profissao }}</p>
 @else
-    <h1>Seu nome não é nem Marcos ou Samuel é {{ $meu_nome }}</h1>
+<p>O nome não é Pedro</p>
 @endif
 
-<p>Sua profissão: {{ $profissao }}</p>
-<p>Sua idade: {{ $idade }} anos</p>
+@for($i = 0; $i < count($arr); $i++) <p>{{ $arr[$i] }} - {{ $i }}</p>
+    @if($i == 2)
+    <p>O i é 2</p>
+    @endif
+    @endfor
 
-@for ($i = 0; $i < count($lista); $i++)
-    <p>{{ $lista[$i] }} - {{$i}}</p>
-@endfor
+    @foreach($nomes as $nome)
+    <p>{{ $loop->index }}</p>
+    <p>{{ $nome }}</p>
+    @endforeach
 
-@php
-    $nome = "Marcos Samuel";
+    @php
+    $name = "João";
+    echo $name;
+    @endphp
 
-    echo $nome;
-@endphp
+    <!-- Comentário do HTML -->
+    {{-- Este é o comentário do Blade --}}
 
-<!--Olá, mundo-->
-{{--  Olá, mundo  --}}
-
-
-@foreach($alfabeto as $alphabet)
-    <p>{{ $alphabet }}</p>
-    <p>{{ $loop->index }}</p> <!-- pega o índice dos elementos -->
-@endforeach
-
-
-@endsection
+    @endsection
